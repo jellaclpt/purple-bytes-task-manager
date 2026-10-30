@@ -69,7 +69,7 @@ The small Express server in `server/` only serves the app locally. It has no API
 | --- | --- |
 | `npm run dev` | Starts the development server with hot reload |
 | `npm run build` | Builds the site to `dist/public` and the local server to `dist/index.cjs` |
-| `npm run start` | Serves the production build (macOS and Linux shells only) |
+| `npm run start` | Serves the production build |
 | `npm run check` | Runs the TypeScript type check |
 
 The app's service worker only runs in the production build.
