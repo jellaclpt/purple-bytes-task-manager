@@ -2,7 +2,7 @@
 
 A modern, client-side task management application built with React, TypeScript, and Tailwind CSS. All data is stored locally in the browser using localStorage - no backend or database required!
 
-**🌐 Live Demo:** [https://purple-bytes-task-manager.vercel.app/](https://purple-bytes-task-manager.vercel.app/)
+**🌐 Live Demo:** [https://purplebytes-taskmanager.vercel.app](https://purplebytes-taskmanager.vercel.app)
 
 ---
 
