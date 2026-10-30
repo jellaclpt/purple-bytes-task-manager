@@ -212,7 +212,7 @@ export default function Tasks() {
 
   return (
     <LayoutWrapper>
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
+      <div className="w-full px-4 md:px-8 py-4 md:py-6">
         <div className="mb-3 md:mb-4 flex items-start justify-between gap-3">
           <div className="min-w-0">
             <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-1" data-testid="text-page-title">

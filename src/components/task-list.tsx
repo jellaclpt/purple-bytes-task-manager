@@ -14,7 +14,7 @@ interface TaskListProps {
 
 function TaskListSkeleton() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-3">
       {[1, 2, 3, 4, 5, 6].map((i) => (
         <div key={i} className="rounded-lg border p-6 space-y-4">
           <Skeleton className="h-6 w-3/4" />
@@ -57,7 +57,7 @@ export function TaskList({
 
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-3"
       data-testid="task-list"
     >
       {tasks.map((task) => (

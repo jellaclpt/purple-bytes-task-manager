@@ -71,7 +71,7 @@ export default function Dashboard() {
 
   return (
     <LayoutWrapper>
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
+      <div className="w-full px-4 md:px-8 py-4 md:py-6">
         <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-3 md:mb-4" data-testid="text-page-title">
           Dashboard
         </h2>

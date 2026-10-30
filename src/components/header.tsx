@@ -12,7 +12,7 @@ export function Header({ onNewTask }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#D38EEC] bg-[#E7C3F6] dark:border-[#4A2051] dark:bg-[#4A2051] dark:text-white">
-      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-2 md:gap-4 px-4 md:px-8">
+      <div className="w-full flex h-16 items-center justify-between gap-2 md:gap-4 px-4 md:px-8">
         <div className="flex items-center gap-1 md:gap-2 min-w-0">
           <img src="/prplbyts.svg" alt="Logo" className="h-10 w-10 md:h-12 md:w-12 shrink-0" />
           <h1 className="hidden min-[360px]:block text-sm md:text-xl font-semibold tracking-tight whitespace-nowrap">Task Manager</h1>
