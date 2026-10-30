@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
+import { SettingsMenu } from "./settings-menu";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface HeaderProps {
@@ -36,7 +36,7 @@ export function Header({ onNewTask }: HeaderProps) {
               Tasks
             </Button>
           </nav>
-          <ThemeToggle />
+          <SettingsMenu />
         </div>
       </div>
     </header>
