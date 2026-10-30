@@ -1,337 +1,98 @@
 # Purple Bytes: Task Manager
 
-A modern, client-side task management application built with React, TypeScript, and Tailwind CSS. All data is stored locally in the browser using localStorage - no backend or database required!
+A frontend-only task manager for keeping personal to-dos in one place. Add tasks, move them from To Do to Done, and see where everything stands on a simple dashboard. There is no account to create and no database: tasks are saved in your browser.
 
-**🌐 Live Demo:** [https://purplebytes-taskmanager.vercel.app](https://purplebytes-taskmanager.vercel.app)
-
----
-
-## Table of Contents
-
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Available Scripts](#available-scripts)
-- [Deployment](#deployment)
-
----
-
-## Project Overview
-
-Purple Bytes: Task Manager is a fully client-side task management application that allows users to create, organize, and track their tasks efficiently. The application features:
-
-- **Modern UI** with dark mode support
-- **Responsive design** that works on all devices
-- **Client-side storage** using browser localStorage
-- **No backend required** - works entirely in the browser
-- **Clean component-based architecture** with TypeScript
-
-### Key Highlights
-
-- ✅ **Zero Setup** - No database or backend configuration needed
-- ✅ **Fast & Lightweight** - All data stored locally in the browser
-- ✅ **Privacy-First** - Your tasks never leave your device
-- ✅ **Offline-First** - Works without an internet connection
-- ✅ **Modern Stack** - Built with the latest React and TypeScript
-
----
+**Live demo:** [purplebytes-taskmanager.vercel.app](https://purplebytes-taskmanager.vercel.app)
 
 ## Features
 
-### Task Management
-- ✅ Create, edit, and delete tasks
-- ✅ Set task status (To Do, In Progress, Done)
-- ✅ Assign priorities (Low, Medium, High)
-- ✅ Organize by categories (Work, Personal, Shopping, Health, Finance, Other)
-- ✅ Set due dates with calendar picker
-- ✅ Add descriptions to tasks
+**Dashboard**
+- Counts of tasks in To Do, In Progress and Done
+- The five most recently created tasks, with their due date, status, category and priority
 
-### User Interface
-- ✅ **Dark mode** support with theme toggle
-- ✅ **Responsive design** for mobile, tablet, and desktop
-- ✅ **Search functionality** to quickly find tasks
-- ✅ **Filtering** by status and category
-- ✅ **Sorting** by date, priority, status, or title
-- ✅ **Toast notifications** for user feedback
-- ✅ **Empty states** for better UX
+**Tasks**
+- Create, edit and delete tasks, with a confirmation before deleting
+- Give each task a title, description, status, category, priority and due date
+- Change a task's status from the menu on its card
+- See at a glance which tasks are due today or overdue
 
-### Data Persistence
-- ✅ **Browser localStorage** - Data persists across sessions
-- ✅ **Automatic saving** - Changes are saved immediately
-- ✅ **No data loss** - Tasks remain even after closing the browser
+**Finding tasks**
+- Search by title or description
+- Filter by status and category
+- Sort by date created, due date, priority, status or title
 
----
+**Settings**
+- Dark mode switch, which follows your device's setting until you choose
+- Install the app on your device and open it like a regular app
 
-## Technologies Used
+## How tasks are saved
 
-### Core Technologies
-- **React 18.3.1** - UI library
-- **TypeScript 5.6.3** - Type safety
-- **Vite 5.4.20** - Build tool and dev server
+Tasks are stored in your browser's `localStorage`, so they are never sent to a server. This also means:
 
-### Styling
-- **Tailwind CSS 3.4.17** - Utility-first CSS framework
-- **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixing
-- **tailwindcss-animate** - Animation utilities
-- **@tailwindcss/typography** - Typography plugin
+- Tasks stay on the browser and device where you made them and do not sync to others.
+- Clearing your browser data deletes them.
+- New visitors start with an empty list.
 
-### Routing
-- **React Router DOM 7.10.1** - Client-side routing
+After the first visit, the service worker lets the app open without an internet connection.
 
-### UI Components
-- **Radix UI** - Accessible component primitives
-- **shadcn/ui** - Component library built on Radix UI
-- **Lucide React** - Icon library
-- **Framer Motion** - Animation library
+## Built with
 
-### State Management & Forms
-- **TanStack Query (React Query) 5.60.5** - State management for mutations
-- **React Hook Form 7.55.0** - Form state management
-- **Zod 3.24.2** - Schema validation
+| Area | Tools |
+| --- | --- |
+| Language and UI | TypeScript, React 18 |
+| Build | Vite |
+| Styling | Tailwind CSS, shadcn/ui (Radix UI), Lucide icons |
+| Routing | React Router |
+| Forms and validation | React Hook Form, Zod |
+| Dates | date-fns, React Day Picker |
+| Installable app | Web app manifest, service worker |
+| Hosting | Vercel |
 
-### Data Storage
-- **Browser localStorage** - Client-side data persistence
-- **Custom localStorage service** - Type-safe data management
+## Getting started
 
-### Additional Libraries
-- **date-fns** - Date utility functions
-- **next-themes** - Theme management (dark mode)
-- **clsx** & **tailwind-merge** - Conditional class utilities
-
----
-
-## Project Structure
-
-```
-purple-bytes-task-manager/
-├── public/               # Static assets
-│   └── prplbyts.svg     # Logo/icon
-├── src/
-│   ├── assets/          # Images and other assets
-│   ├── components/      # React components
-│   │   ├── ui/         # Reusable UI components (shadcn/ui)
-│   │   ├── header.tsx
-│   │   ├── footer.tsx
-│   │   ├── task-card.tsx
-│   │   ├── task-form.tsx
-│   │   ├── task-list.tsx
-│   │   └── ...         # Other task-related components
-│   ├── hooks/          # Custom React hooks
-│   ├── lib/            # Utility functions and configurations
-│   │   ├── localStorage.ts  # localStorage service
-│   │   ├── queryClient.ts   # React Query configuration
-│   │   └── utils.ts
-│   ├── pages/          # Page components
-│   │   ├── dashboard.tsx
-│   │   ├── tasks.tsx
-│   │   └── not-found.tsx
-│   ├── routes/         # Route configuration
-│   ├── App.tsx         # Main App component
-│   ├── main.tsx        # Application entry point
-│   └── index.css       # Global styles and Tailwind imports
-├── server/             # Express server (for dev server only)
-│   ├── index.ts       # Express server setup
-│   ├── static.ts      # Static file serving
-│   └── vite.ts        # Vite dev server integration
-├── shared/            # Shared types and schemas
-│   └── schema.ts      # TypeScript types and Zod schemas
-├── dist/              # Production build output
-├── index.html         # HTML template
-├── vercel.json        # Vercel deployment configuration
-├── package.json       # Dependencies and scripts
-├── vite.config.ts     # Vite configuration
-├── tailwind.config.ts # Tailwind CSS configuration
-├── postcss.config.js  # PostCSS configuration
-└── tsconfig.json      # TypeScript configuration
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- **Node.js** (v18 or higher recommended)
-- **npm** or **yarn** package manager
-- **Git** (optional, for cloning)
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/purple-bytes-task-manager.git
-   cd purple-bytes-task-manager
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser:**
-   Navigate to `http://localhost:5000` (or the port shown in terminal)
-
-The application will automatically reload when you make changes to the code.
-
-### Building for Production
+You need [Node.js](https://nodejs.org) 18 or newer.
 
 ```bash
-npm run build
+git clone https://github.com/jellaclpt/purple-bytes-task-manager.git
+cd purple-bytes-task-manager
+npm install
+npm run dev
 ```
 
-The production build will be created in the `dist/public` directory.
+Then open [http://localhost:5000](http://localhost:5000). You do not need to set any environment variables.
 
-### Running Production Build Locally
+The small Express server in `server/` only serves the app locally. It has no API and stores no data.
 
-```bash
-npm run start
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Starts the development server with hot reload |
+| `npm run build` | Builds the site to `dist/public` and the local server to `dist/index.cjs` |
+| `npm run start` | Serves the production build (macOS and Linux shells only) |
+| `npm run check` | Runs the TypeScript type check |
+
+The app's service worker only runs in the production build.
+
+## Project structure
+
 ```
-
-This starts a production server on `http://localhost:5000`.
-
----
-
-## Available Scripts
-
-- `npm run dev` - Start development server with hot module replacement
-- `npm run build` - Build the application for production
-- `npm run start` - Start production server (after build)
-- `npm run check` - Run TypeScript type checking
-
----
+public/              Logo, app icons, web app manifest and service worker
+shared/schema.ts     Task types, options and validation rules
+server/              Local Express server for development and previews
+src/
+  components/        Task cards, form, filters, header and settings menu
+  components/ui/     shadcn/ui components
+  hooks/             Shared React hooks
+  lib/               localStorage service, install support and helpers
+  pages/             Dashboard, Tasks and Not Found pages
+  routes/            Page routes
+```
 
 ## Deployment
 
-### Deploying to Vercel
-
-The application is configured for easy deployment to Vercel:
-
-1. **Push your code to GitHub**
-
-2. **Deploy via Vercel Dashboard:**
-   - Go to [vercel.com](https://vercel.com)
-   - Sign in with your GitHub account
-   - Click "New Project"
-   - Import your GitHub repository
-   - Configure project settings:
-     - **Framework Preset:** Vite
-     - **Root Directory:** `.` (root)
-     - **Build Command:** `npm run build`
-     - **Output Directory:** `dist/public`
-     - **Install Command:** `npm install`
-
-3. **Deploy via Vercel CLI (alternative):**
-   ```bash
-   npm install -g vercel
-   vercel login
-   vercel
-   ```
-
-### Vercel Configuration
-
-- ✅ Automatic HTTPS
-- ✅ Global CDN distribution
-- ✅ Automatic deployments on every push
-- ✅ Preview deployments for pull requests
-- ✅ Custom domain support
-
-**Note:** No environment variables or database setup required! The app works entirely client-side.
-
----
-
-## How It Works
-
-### Data Storage
-
-All tasks are stored in the browser's `localStorage` using a custom service (`src/lib/localStorage.ts`). This means:
-
-- **Data persists** across browser sessions
-- **No server needed** - everything runs client-side
-- **Privacy-focused** - data never leaves your device
-- **Fast** - instant read/write operations
-- **Offline-capable** - works without internet
-
-### Data Structure
-
-Tasks are stored as JSON in localStorage with the following structure:
-
-```typescript
-{
-  id: string;
-  title: string;
-  description: string | null;
-  status: "todo" | "in-progress" | "done";
-  category: "work" | "personal" | "shopping" | "health" | "finance" | "other";
-  priority: "low" | "medium" | "high";
-  dueDate: Date | null;
-  createdAt: Date;
-}
-```
-
-### Limitations
-
-- **Browser-specific** - Tasks are stored per browser/device
-- **Storage limit** - localStorage typically has a 5-10MB limit
-- **No sync** - Tasks don't sync across devices
-- **No backup** - Clearing browser data will delete tasks
-
----
-
-## Development
-
-### Code Structure
-
-- **Components** are organized by feature in `src/components/`
-- **Pages** are in `src/pages/`
-- **Utilities** and services are in `src/lib/`
-- **Types** and schemas are in `shared/schema.ts`
-
-### Adding New Features
-
-1. Create components in `src/components/`
-2. Add types to `shared/schema.ts` if needed
-3. Update `src/lib/localStorage.ts` for new data operations
-4. Add routes in `src/routes/index.tsx` if needed
-
-### Styling
-
-- Uses **Tailwind CSS** for all styling
-- Custom theme colors defined in `tailwind.config.ts`
-- Dark mode support via `next-themes`
-- Responsive design with mobile-first approach
-
----
+The site is hosted on Vercel, using the settings in `vercel.json`: it runs `npm run build` and publishes `dist/public`. All page routes go to `index.html`, so links such as `/tasks` work when opened directly.
 
 ## License
 
 MIT
-
----
-
-## Acknowledgments
-
-- Built with [Vite](https://vitejs.dev/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- UI components from [shadcn/ui](https://ui.shadcn.com/)
-- Deployed on [Vercel](https://vercel.com/)
-- Icons from [Lucide](https://lucide.dev/)
-
----
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-## Support
-
-If you encounter any issues or have questions, please open an issue on GitHub.
