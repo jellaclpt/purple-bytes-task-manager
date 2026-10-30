@@ -23,7 +23,7 @@ export function Header({ onNewTask }: HeaderProps) {
               variant="outline"
               size="sm"
               onClick={() => navigate("/")}
-              className={`focus-visible:ring-[#9D43AD] ${location.pathname === "/" ? "bg-[#9D43AD] [border-color:#9D43AD] text-white font-semibold" : "[border-color:#9D43AD] dark:[border-color:rgba(255,255,255,.4)]"}`}
+              className={`focus-visible:ring-[#9D43AD] ${location.pathname === "/" ? "bg-[#9D43AD] [border-color:#9D43AD] text-white font-semibold" : "[border-color:transparent] shadow-none"}`}
             >
               Dashboard
             </Button>
@@ -31,7 +31,7 @@ export function Header({ onNewTask }: HeaderProps) {
               variant="outline"
               size="sm"
               onClick={() => navigate("/tasks")}
-              className={`focus-visible:ring-[#9D43AD] ${location.pathname === "/tasks" ? "bg-[#9D43AD] [border-color:#9D43AD] text-white font-semibold" : "[border-color:#9D43AD] dark:[border-color:rgba(255,255,255,.4)]"}`}
+              className={`focus-visible:ring-[#9D43AD] ${location.pathname === "/tasks" ? "bg-[#9D43AD] [border-color:#9D43AD] text-white font-semibold" : "[border-color:transparent] shadow-none"}`}
             >
               Tasks
             </Button>
