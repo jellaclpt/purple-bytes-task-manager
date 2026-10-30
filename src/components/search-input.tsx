@@ -17,7 +17,7 @@ export function SearchInput({ value, onChange, placeholder = "Search tasks..." }
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="pl-9 pr-9 border-[#D38EEC] dark:border-[#9D43AD]"
+        className="pl-9 pr-9"
         data-testid="input-search"
       />
       

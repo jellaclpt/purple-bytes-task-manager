@@ -27,7 +27,7 @@ export function SortDropdown({ value, onChange }: SortDropdownProps) {
     <div className="flex items-center gap-2">
       <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
       <Select value={value} onValueChange={onChange}>
-        <SelectTrigger className="w-36 border-[#D38EEC] dark:border-[#9D43AD]" data-testid="sort-dropdown">
+        <SelectTrigger className="w-36" data-testid="sort-dropdown">
           <SelectValue placeholder="Sort by" />
         </SelectTrigger>
         <SelectContent>
