@@ -11,10 +11,10 @@ export function Header({ onNewTask }: HeaderProps) {
   const navigate = useNavigate();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#6B2F75] bg-[#6B2F75] text-white dark:border-[#4A2051] dark:bg-[#4A2051]">
+    <header className="sticky top-0 z-50 w-full border-b border-[#D38EEC] bg-[#E7C3F6] dark:border-[#4A2051] dark:bg-[#4A2051] dark:text-white">
       <div className="max-w-7xl mx-auto flex h-16 items-center justify-between gap-4 px-6 md:px-8">
         <div className="flex items-center gap-2">
-          <img src="/prplbyts.svg" alt="Logo" className="h-8 w-8 rounded-md bg-white p-0.5" />
+          <img src="/prplbyts.svg" alt="Logo" className="h-12 w-12" />
           <h1 className="text-xl font-semibold tracking-tight">Task Manager</h1>
         </div>
         <div className="flex items-center gap-6">
@@ -23,7 +23,7 @@ export function Header({ onNewTask }: HeaderProps) {
               variant="outline"
               size="sm"
               onClick={() => navigate("/")}
-              className={location.pathname === "/" ? "bg-white border-white text-[#6B2F75] font-semibold" : "[border-color:rgba(255,255,255,.4)]"}
+              className={`focus-visible:ring-[#9D43AD] ${location.pathname === "/" ? "bg-[#9D43AD] [border-color:#9D43AD] text-white font-semibold" : "[border-color:#9D43AD] dark:[border-color:rgba(255,255,255,.4)]"}`}
             >
               Dashboard
             </Button>
@@ -31,7 +31,7 @@ export function Header({ onNewTask }: HeaderProps) {
               variant="outline"
               size="sm"
               onClick={() => navigate("/tasks")}
-              className={location.pathname === "/tasks" ? "bg-white border-white text-[#6B2F75] font-semibold" : "[border-color:rgba(255,255,255,.4)]"}
+              className={`focus-visible:ring-[#9D43AD] ${location.pathname === "/tasks" ? "bg-[#9D43AD] [border-color:#9D43AD] text-white font-semibold" : "[border-color:#9D43AD] dark:[border-color:rgba(255,255,255,.4)]"}`}
             >
               Tasks
             </Button>

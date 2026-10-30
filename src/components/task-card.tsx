@@ -35,7 +35,7 @@ export function TaskCard({ task, onStatusChange, onDelete, onEdit }: TaskCardPro
 
   return (
     <Card
-      className="group transition-all duration-200 hover-elevate cursor-pointer border-gray-200 dark:border-gray-700 hover:border-[#D38EEC] dark:hover:border-[#9D43AD]"
+      className="group transition-all duration-200 hover-elevate cursor-pointer border-gray-200 dark:border-gray-700 hover:border-[#D38EEC] dark:hover:border-[#9D43AD] hover:ring-1 hover:ring-[#D38EEC] dark:hover:ring-[#9D43AD]"
       data-testid={`card-task-${task.id}`}
       onClick={() => onEdit(task)}
     >
