@@ -114,17 +114,14 @@ export default function Dashboard() {
                 return (
                   <Card key={activity.id} className="p-3 border-[#D38EEC] dark:border-[#9D43AD]">
                     <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-                      <div className="min-w-0 lg:w-64 lg:shrink-0">
-                        <p className="font-medium text-sm break-words lg:truncate">{activity.taskTitle}</p>
+                      <div className="min-w-0 lg:flex-1">
+                        <p className="font-medium text-sm break-words">{activity.taskTitle}</p>
                         <p className="text-xs text-muted-foreground mt-1">
                           Created • {format(new Date(activity.timestamp), "MMM d, yyyy h:mm a")}
                         </p>
                       </div>
                       {task && (
                         <>
-                          <p className="text-sm text-muted-foreground line-clamp-2 lg:line-clamp-none lg:truncate min-w-0 lg:flex-1 empty:hidden lg:empty:block">
-                            {task.description}
-                          </p>
                           <div className="flex items-center gap-1.5 text-xs text-muted-foreground lg:w-36 lg:shrink-0 empty:hidden lg:empty:block">
                             {task.dueDate && (
                               <>
