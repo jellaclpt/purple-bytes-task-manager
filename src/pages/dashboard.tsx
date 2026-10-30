@@ -108,33 +108,39 @@ export default function Dashboard() {
           {recentActivity.length === 0 ? (
             <EmptyState title="No recent activity yet" />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2 md:gap-3">
+            <div className="flex flex-col gap-2">
               {recentActivity.map((activity) => {
                 const task = tasks.find((t) => t.id === activity.taskId);
                 return (
-                  <Card key={activity.id} className="p-3 md:p-4 border-[#D38EEC] dark:border-[#9D43AD]">
-                    <p className="font-medium text-sm break-words">{activity.taskTitle}</p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Created • {format(new Date(activity.timestamp), "MMM d, yyyy h:mm a")}
-                    </p>
-                    {task && (
-                      <div className="mt-2 space-y-2">
-                        {task.description && (
-                          <p className="text-sm text-muted-foreground line-clamp-2">{task.description}</p>
-                        )}
-                        {task.dueDate && (
-                          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                            <CalendarDays className="h-3.5 w-3.5" />
-                            <span>Due: {format(task.dueDate, "MMM d, yyyy")}</span>
-                          </div>
-                        )}
-                        <div className="flex flex-wrap items-center gap-2">
-                          <StatusBadge status={task.status} />
-                          <CategoryTag category={task.category} />
-                          <PriorityBadge priority={task.priority || "medium"} />
-                        </div>
+                  <Card key={activity.id} className="p-3 border-[#D38EEC] dark:border-[#9D43AD]">
+                    <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+                      <div className="min-w-0 lg:w-64 lg:shrink-0">
+                        <p className="font-medium text-sm break-words lg:truncate">{activity.taskTitle}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Created • {format(new Date(activity.timestamp), "MMM d, yyyy h:mm a")}
+                        </p>
                       </div>
-                    )}
+                      {task && (
+                        <>
+                          <p className="text-sm text-muted-foreground line-clamp-2 lg:line-clamp-none lg:truncate min-w-0 lg:flex-1 empty:hidden lg:empty:block">
+                            {task.description}
+                          </p>
+                          <div className="flex items-center gap-1.5 text-xs text-muted-foreground lg:w-36 lg:shrink-0 empty:hidden lg:empty:block">
+                            {task.dueDate && (
+                              <>
+                                <CalendarDays className="h-3.5 w-3.5" />
+                                <span>Due: {format(task.dueDate, "MMM d, yyyy")}</span>
+                              </>
+                            )}
+                          </div>
+                          <div className="flex flex-wrap items-center gap-2 lg:w-72 lg:shrink-0 lg:justify-end">
+                            <StatusBadge status={task.status} />
+                            <CategoryTag category={task.category} />
+                            <PriorityBadge priority={task.priority || "medium"} />
+                          </div>
+                        </>
+                      )}
+                    </div>
                   </Card>
                 );
               })}
