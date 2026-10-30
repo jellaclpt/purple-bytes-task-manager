@@ -221,7 +221,7 @@ export default function Tasks() {
             <p className="text-xs md:text-base text-muted-foreground" data-testid="text-task-summary">
               {taskCounts.total === 0
                 ? "No tasks yet. Create one to get started!"
-                : `To-do: ${taskCounts.todo} / In Progress: ${taskCounts.inProgress} / Done: ${taskCounts.done}`}
+                : `To-do: ${taskCounts.todo} | In Progress: ${taskCounts.inProgress} | Done: ${taskCounts.done}`}
             </p>
           </div>
           <div className="shrink-0">
