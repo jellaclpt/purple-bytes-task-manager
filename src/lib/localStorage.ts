@@ -1,4 +1,5 @@
 import type { Task, InsertTask } from "@shared/schema";
+import { createSampleTasks } from "./sampleTasks";
 
 const STORAGE_KEY = "task-manager-tasks";
 
@@ -6,6 +7,12 @@ export const localStorageService = {
   getTasks(): Task[] {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
+      // Only seed on a first visit, so deleting every task doesn't bring the samples back
+      if (stored === null) {
+        const samples = createSampleTasks();
+        this.saveTasks(samples);
+        return samples;
+      }
       if (!stored) return [];
       const tasks = JSON.parse(stored);
       // Convert date strings back to Date objects
