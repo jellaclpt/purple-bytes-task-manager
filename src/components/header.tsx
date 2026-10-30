@@ -20,16 +20,18 @@ export function Header({ onNewTask }: HeaderProps) {
         <div className="flex items-center gap-6">
           <nav className="flex items-center gap-2">
             <Button
-              variant={location.pathname === "/" ? "default" : "outline"}
+              variant="outline"
               size="sm"
               onClick={() => navigate("/")}
+              className={location.pathname === "/" ? "bg-white border-white text-[#6B2F75] font-semibold" : "[border-color:rgba(255,255,255,.4)]"}
             >
               Dashboard
             </Button>
             <Button
-              variant={location.pathname === "/tasks" ? "default" : "outline"}
+              variant="outline"
               size="sm"
               onClick={() => navigate("/tasks")}
+              className={location.pathname === "/tasks" ? "bg-white border-white text-[#6B2F75] font-semibold" : "[border-color:rgba(255,255,255,.4)]"}
             >
               Tasks
             </Button>
