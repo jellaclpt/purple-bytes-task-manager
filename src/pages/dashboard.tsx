@@ -2,10 +2,14 @@ import { useState, useMemo, useEffect } from "react";
 import { LayoutWrapper } from "@/components/layout-wrapper";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/empty-state";
+import { StatusBadge } from "@/components/status-badge";
+import { CategoryTag } from "@/components/category-tag";
+import { PriorityBadge } from "@/components/priority-badge";
 import { useToast } from "@/hooks/use-toast";
 import { localStorageService } from "@/lib/localStorage";
 import { type Task } from "@shared/schema";
 import { format } from "date-fns";
+import { CalendarDays } from "lucide-react";
 
 interface RecentActivity {
   id: string;
@@ -54,9 +58,9 @@ export default function Dashboard() {
       }
     });
 
-    // Sort by timestamp descending and keep only top 10
+    // Sort by timestamp descending and keep only top 5
     activity.sort((a, b) => b.timestamp - a.timestamp);
-    const topActivity = activity.slice(0, 10);
+    const topActivity = activity.slice(0, 5);
 
     setRecentActivity(topActivity);
     localStorage.setItem("taskRecentActivity", JSON.stringify(topActivity));
@@ -105,21 +109,42 @@ export default function Dashboard() {
             <EmptyState title="No recent activity yet" />
           ) : (
             <div className="flex flex-col gap-2">
-              {recentActivity.map((activity) => (
-                <Card key={activity.id} className="p-3 md:p-4 border-[#D38EEC] dark:border-[#9D43AD]">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex-1 min-w-0">
-                      <p className="font-medium text-sm break-words">{activity.taskTitle}</p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Created • {format(new Date(activity.timestamp), "MMM d, yyyy h:mm a")}
-                      </p>
+              {recentActivity.map((activity) => {
+                const task = tasks.find((t) => t.id === activity.taskId);
+                return (
+                  <Card key={activity.id} className="p-3 md:p-4 border-[#D38EEC] dark:border-[#9D43AD]">
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm break-words">{activity.taskTitle}</p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Created • {format(new Date(activity.timestamp), "MMM d, yyyy h:mm a")}
+                        </p>
+                      </div>
+                      <span className="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
+                        Created
+                      </span>
                     </div>
-                    <span className="px-2 py-1 rounded text-xs font-medium bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
-                      Created
-                    </span>
-                  </div>
-                </Card>
-              ))}
+                    {task && (
+                      <div className="mt-2 space-y-2">
+                        {task.description && (
+                          <p className="text-sm text-muted-foreground line-clamp-2">{task.description}</p>
+                        )}
+                        {task.dueDate && (
+                          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                            <CalendarDays className="h-3.5 w-3.5" />
+                            <span>Due: {format(task.dueDate, "MMM d, yyyy")}</span>
+                          </div>
+                        )}
+                        <div className="flex flex-wrap items-center gap-2">
+                          <StatusBadge status={task.status} />
+                          <CategoryTag category={task.category} />
+                          <PriorityBadge priority={task.priority || "medium"} />
+                        </div>
+                      </div>
+                    )}
+                  </Card>
+                );
+              })}
             </div>
           )}
         </div>
