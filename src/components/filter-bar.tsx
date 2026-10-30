@@ -38,7 +38,7 @@ export function FilterBar({
             value={statusFilter}
             onValueChange={(value) => onStatusChange(value as TaskStatus | "all")}
           >
-            <SelectTrigger className="w-40 border-[#D38EEC] dark:border-[#9D43AD]" data-testid="filter-status">
+            <SelectTrigger className="w-40" data-testid="filter-status">
               <SelectValue placeholder="All Statuses" />
             </SelectTrigger>
             <SelectContent>
@@ -60,7 +60,7 @@ export function FilterBar({
             value={categoryFilter}
             onValueChange={(value) => onCategoryChange(value as TaskCategory | "all")}
           >
-            <SelectTrigger className="w-40 border-[#D38EEC] dark:border-[#9D43AD]" data-testid="filter-category">
+            <SelectTrigger className="w-40" data-testid="filter-category">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>

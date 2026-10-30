@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { LayoutWrapper } from "@/components/layout-wrapper";
 import { Card } from "@/components/ui/card";
+import { EmptyState } from "@/components/empty-state";
 import { useToast } from "@/hooks/use-toast";
 import { localStorageService } from "@/lib/localStorage";
 import { type Task } from "@shared/schema";
@@ -101,9 +102,7 @@ export default function Dashboard() {
         <div>
           <h3 className="text-xl font-semibold tracking-tight mb-4">Recent Activity</h3>
           {recentActivity.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-muted-foreground">No recent activity yet</p>
-            </div>
+            <EmptyState title="No recent activity yet" />
           ) : (
             <div className="flex flex-col gap-3 overflow-x-auto">
               {recentActivity.map((activity) => (

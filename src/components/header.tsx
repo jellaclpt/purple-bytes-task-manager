@@ -18,20 +18,18 @@ export function Header({ onNewTask }: HeaderProps) {
           <h1 className="text-xl font-semibold tracking-tight">Task Manager</h1>
         </div>
         <div className="flex items-center gap-6">
-          <nav className="flex items-center gap-1">
-            <Button 
-              variant="ghost" 
+          <nav className="flex items-center gap-2">
+            <Button
+              variant={location.pathname === "/" ? "default" : "outline"}
               size="sm"
               onClick={() => navigate("/")}
-              className={location.pathname === "/" ? "text-foreground font-semibold border-b-2 border-[#D38EEC] rounded-none" : "text-muted-foreground hover:text-foreground"}
             >
               Dashboard
             </Button>
-            <Button 
-              variant="ghost" 
+            <Button
+              variant={location.pathname === "/tasks" ? "default" : "outline"}
               size="sm"
               onClick={() => navigate("/tasks")}
-              className={location.pathname === "/tasks" ? "text-foreground font-semibold border-b-2 border-[#D38EEC] rounded-none" : "text-muted-foreground hover:text-foreground"}
             >
               Tasks
             </Button>
