@@ -8,7 +8,7 @@ interface EmptyStateProps {
 export function EmptyState({ title, description }: EmptyStateProps) {
   return (
     <div
-      className="flex flex-col items-center justify-center min-h-48 text-center p-8 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600"
+      className="flex flex-col items-center justify-center min-h-40 md:min-h-48 text-center p-4 md:p-8 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600"
       data-testid="empty-state"
     >
       <div className="rounded-full bg-muted p-4 mb-4">

@@ -39,11 +39,11 @@ export function TaskCard({ task, onStatusChange, onDelete, onEdit }: TaskCardPro
       data-testid={`card-task-${task.id}`}
       onClick={() => onEdit(task)}
     >
-      <CardHeader className="flex flex-row items-start justify-between gap-4 space-y-0 pb-3">
+      <CardHeader className="flex flex-row items-start justify-between gap-2 md:gap-4 space-y-0 p-3 md:p-6 pb-1 md:pb-3">
         <div className="flex-1 min-w-0">
           <h3
             className={cn(
-              "text-lg font-medium leading-tight truncate",
+              "text-base md:text-lg font-medium leading-tight truncate",
               task.status === "done" && "line-through text-muted-foreground"
             )}
             data-testid={`text-task-title-${task.id}`}
@@ -56,7 +56,7 @@ export function TaskCard({ task, onStatusChange, onDelete, onEdit }: TaskCardPro
             <Button
               variant="ghost"
               size="icon"
-              className="opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+              className="md:opacity-0 md:group-hover:opacity-100 transition-opacity shrink-0"
               data-testid={`button-task-menu-${task.id}`}
               aria-label="Task options"
               onClick={(e) => e.stopPropagation()}
@@ -107,7 +107,7 @@ export function TaskCard({ task, onStatusChange, onDelete, onEdit }: TaskCardPro
           </DropdownMenuContent>
         </DropdownMenu>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-2 md:space-y-3 p-3 pt-0 md:p-6 md:pt-0">
         {task.description && (
           <p
             className="text-sm text-muted-foreground line-clamp-2"

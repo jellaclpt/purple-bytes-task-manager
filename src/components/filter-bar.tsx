@@ -27,18 +27,18 @@ export function FilterBar({
   const hasFilters = statusFilter !== "all" || categoryFilter !== "all";
 
   return (
-    <div className="sticky top-16 z-40 backdrop-blur-sm border-b py-4">
-      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+    <div className="md:sticky md:top-16 z-40 backdrop-blur-sm border-b pb-2 md:py-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Filter className="h-4 w-4" />
           <span>Filters:</span>
         </div>
-        <div className="flex flex-wrap items-center gap-4 flex-1">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 w-full sm:w-auto flex-1">
           <Select
             value={statusFilter}
             onValueChange={(value) => onStatusChange(value as TaskStatus | "all")}
           >
-            <SelectTrigger className="w-40" data-testid="filter-status">
+            <SelectTrigger className="flex-1 min-w-0 sm:flex-none sm:w-40" data-testid="filter-status">
               <SelectValue placeholder="All Statuses" />
             </SelectTrigger>
             <SelectContent>
@@ -60,7 +60,7 @@ export function FilterBar({
             value={categoryFilter}
             onValueChange={(value) => onCategoryChange(value as TaskCategory | "all")}
           >
-            <SelectTrigger className="w-40" data-testid="filter-category">
+            <SelectTrigger className="flex-1 min-w-0 sm:flex-none sm:w-40" data-testid="filter-category">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>

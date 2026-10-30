@@ -212,31 +212,31 @@ export default function Tasks() {
 
   return (
     <LayoutWrapper>
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-6">
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight mb-2" data-testid="text-page-title">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
+        <div className="mb-3 md:mb-4 flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-1" data-testid="text-page-title">
               Your Tasks
             </h2>
-            <p className="text-muted-foreground" data-testid="text-task-summary">
+            <p className="text-xs md:text-base text-muted-foreground" data-testid="text-task-summary">
               {taskCounts.total === 0
                 ? "No tasks yet. Create one to get started!"
                 : `To-do: ${taskCounts.todo} / In Progress: ${taskCounts.inProgress} / Done: ${taskCounts.done}`}
             </p>
           </div>
-          <div>
-            <Button 
-              onClick={() => setIsFormOpen(true)} 
+          <div className="shrink-0">
+            <Button
+              onClick={() => setIsFormOpen(true)}
               data-testid="button-new-task"
-              className="bg-[#E7C3F6] text-black hover:bg-[#D38EEC] border border-[#D38EEC] dark:bg-[#9D43AD] dark:hover:bg-[#833E8F] dark:text-white dark:border-[#9D43AD]"
+              className="px-3 md:px-4 text-xs md:text-sm bg-[#E7C3F6] text-black hover:bg-[#D38EEC] border border-[#D38EEC] dark:bg-[#9D43AD] dark:hover:bg-[#833E8F] dark:text-white dark:border-[#9D43AD]"
             >
-              <Plus className="mr-2 h-4 w-4" />
+              <Plus className="h-4 w-4" />
               Add Task
             </Button>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 mb-6">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-2 md:mb-3">
           <SearchInput
             value={searchQuery}
             onChange={setSearchQuery}
@@ -255,7 +255,7 @@ export default function Tasks() {
           onClearFilters={handleClearFilters}
         />
 
-        <div className="py-6">
+        <div className="py-3 md:py-4">
           <TaskList
             tasks={filteredAndSortedTasks}
             isLoading={isLoading}

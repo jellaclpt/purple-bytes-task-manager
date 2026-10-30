@@ -71,45 +71,45 @@ export default function Dashboard() {
 
   return (
     <LayoutWrapper>
-      <div className="max-w-7xl mx-auto px-6 md:px-8 py-6">
-        <h2 className="text-2xl font-semibold tracking-tight mb-8" data-testid="text-page-title">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
+        <h2 className="text-xl md:text-2xl font-semibold tracking-tight mb-3 md:mb-4" data-testid="text-page-title">
           Dashboard
         </h2>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="p-6 border-[#D38EEC] dark:border-[#9D43AD]">
+        <div className="grid grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
+          <Card className="p-3 md:p-6 border-[#D38EEC] dark:border-[#9D43AD]">
             <div className="flex flex-col items-center justify-center">
-              <p className="text-muted-foreground text-sm mb-2">To-Do</p>
-              <p className="text-4xl font-bold text-[#D38EEC]">{taskCounts.todo}</p>
+              <p className="text-muted-foreground text-xs md:text-sm whitespace-nowrap mb-1 md:mb-2">To-Do</p>
+              <p className="text-2xl md:text-4xl font-bold text-[#D38EEC]">{taskCounts.todo}</p>
             </div>
           </Card>
-          <Card className="p-6 border-[#D38EEC] dark:border-[#9D43AD]">
+          <Card className="p-3 md:p-6 border-[#D38EEC] dark:border-[#9D43AD]">
             <div className="flex flex-col items-center justify-center">
-              <p className="text-muted-foreground text-sm mb-2">In Progress</p>
-              <p className="text-4xl font-bold text-[#D38EEC]">{taskCounts.inProgress}</p>
+              <p className="text-muted-foreground text-xs md:text-sm whitespace-nowrap mb-1 md:mb-2">In Progress</p>
+              <p className="text-2xl md:text-4xl font-bold text-[#D38EEC]">{taskCounts.inProgress}</p>
             </div>
           </Card>
-          <Card className="p-6 border-[#D38EEC] dark:border-[#9D43AD]">
+          <Card className="p-3 md:p-6 border-[#D38EEC] dark:border-[#9D43AD]">
             <div className="flex flex-col items-center justify-center">
-              <p className="text-muted-foreground text-sm mb-2">Done</p>
-              <p className="text-4xl font-bold text-[#D38EEC]">{taskCounts.done}</p>
+              <p className="text-muted-foreground text-xs md:text-sm whitespace-nowrap mb-1 md:mb-2">Done</p>
+              <p className="text-2xl md:text-4xl font-bold text-[#D38EEC]">{taskCounts.done}</p>
             </div>
           </Card>
         </div>
 
         {/* Recent Activity */}
         <div>
-          <h3 className="text-xl font-semibold tracking-tight mb-4">Recent Activity</h3>
+          <h3 className="text-lg md:text-xl font-semibold tracking-tight mb-2 md:mb-3">Recent Activity</h3>
           {recentActivity.length === 0 ? (
             <EmptyState title="No recent activity yet" />
           ) : (
-            <div className="flex flex-col gap-3 overflow-x-auto">
+            <div className="flex flex-col gap-2">
               {recentActivity.map((activity) => (
-                <Card key={activity.id} className="p-4 border-[#D38EEC] dark:border-[#9D43AD]">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1">
-                      <p className="font-medium text-sm">{activity.taskTitle}</p>
+                <Card key={activity.id} className="p-3 md:p-4 border-[#D38EEC] dark:border-[#9D43AD]">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-sm break-words">{activity.taskTitle}</p>
                       <p className="text-xs text-muted-foreground mt-1">
                         Created • {format(new Date(activity.timestamp), "MMM d, yyyy h:mm a")}
                       </p>
