@@ -262,7 +262,7 @@ export function TaskForm({ open, onOpenChange, onSubmit, isLoading, editTask }: 
                               data-testid="button-due-date"
                             >
                               {field.value ? (
-                                format(field.value, "PPP")
+                                format(field.value, "MMM d, yyyy")
                               ) : (
                                 <span>Pick a date</span>
                               )}
